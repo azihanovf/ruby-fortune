@@ -52,6 +52,9 @@
     const template = document.getElementById('policy-' + name);
     if (!template) return false;
     const clone = template.content.cloneNode(true);
+    // Show policy content without the footer inside the popup.
+    // The source text and standalone policy pages remain unchanged.
+    clone.querySelectorAll('footer').forEach(footer => footer.remove());
     content.replaceChildren(clone);
     if (!dialog.open) {
       previouslyFocused = focusSource || document.activeElement;
